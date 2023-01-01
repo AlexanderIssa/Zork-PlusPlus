@@ -1,0 +1,10 @@
+﻿  Zork++.cpp
+F:\Microsoft Visual Studio\Projects\Zork++\Zork++\Zork++\Zork++.cpp(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+F:\Microsoft Visual Studio\Projects\Zork++\Zork++\Zork++\Zork++.cpp(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+F:\Microsoft Visual Studio\Projects\Zork++\Zork++\Zork++\Zork++.cpp(7,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+F:\Microsoft Visual Studio\Projects\Zork++\Zork++\Zork++\Room.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+F:\Microsoft Visual Studio\Projects\Zork++\Zork++\Zork++\Zork++.cpp(8,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+F:\Microsoft Visual Studio\Projects\Zork++\Zork++\Zork++\Player.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+F:\Microsoft Visual Studio\Projects\Zork++\Zork++\Zork++\Player.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+F:\Microsoft Visual Studio\Projects\Zork++\Zork++\Zork++\Zork++.cpp(13,41): warning C4129: 'G': unrecognized character escape sequence
+  Zork++.vcxproj -> F:\Microsoft Visual Studio\Projects\Zork++\Zork++\x64\Debug\Zork++.exe

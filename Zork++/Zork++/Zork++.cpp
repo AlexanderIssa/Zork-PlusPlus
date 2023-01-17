@@ -14,40 +14,69 @@ using namespace std;
 using json = nlohmann::json;
 
 
+    int main()
+    {
+        //const string defaultRoomsFilename = "Content\Game.json";
+        //Game game = JsonConvert.DeserializeObject<Game>(File.ReadAllText(gameFilename));
 
-int main()
-{
-    const string defaultRoomsFilename = "Content\Game.json";
-    //Game game = JsonConvert.DeserializeObject<Game.(File.ReadAllText(gameFilename));
+        // json conversion example:
+    //    struct person {
+    //        std::string name;
+    //        std::string address;
+    //        int age;
+    //    };
 
-    //To create a json object by reading a JSON file:
-    //ifstream gameFile("game.json");
-    //json data = json::parse(gameFile);
+    //    person p = { "Ned Flanders", "744 Evergreen Terrace", 60 };
 
-    cout << "Welcome to Zork! Insert you name below:\n";
+    //    json j;
+    //    j["name"] = p.name;
+    //    j["address"] = p.address;
+    //    j["age"] = p.age;
 
-    Player player;
-    cin >> player.Name;
+    //    person p2{
+    //j["name"].get<string>(),
+    //j["address"].get<string>(),
+    //j["age"].get<int>()
+    //    };
 
-    //list<int> _test = { 12, 5, 10, 9 };
+    //    cout << p2.name;
 
-    //    for (int x : _test)
-    //    {
-    //        cout << x << '\n';
-    //    }
+        //To create a json object by reading a JSON file:
+        ifstream gameFile("Game.json");
+        json data = json::parse(gameFile);
+        Game game;
+        Game Game2;
+        Game2 = Game::from_json(data, game);
+        //data = (Game)data;
+        //Game game;
+        //json data2 = game;
 
-    Room TestRoom;
-    TestRoom.name = "Test Room";
-    TestRoom.description = "This is a Test Room";
+        //// figure out how to convert json data into a Game class data
+        //auto game = data.get<Zork::Game>();
 
-    
-    player.CurrentRoom = TestRoom;
+        cout << "Welcome to Zork! Insert you name below:\n";
 
-    cout << "Player: " <<  player.Name << "\n" << "Current Room Info: " << player.CurrentRoom.name << "\n" << player.CurrentRoom.description << "\n";
-    
-    //game.Run();
-}
+        Player player;
+        cin >> player.Name;
 
+        //list<int> _test = { 12, 5, 10, 9 };
+
+        //    for (int x : _test)
+        //    {
+        //        cout << x << '\n';
+        //    }
+
+        Room TestRoom;
+        TestRoom.Name = "Test Room";
+        TestRoom.Description = "This is a Test Room";
+
+
+        player.CurrentRoom = TestRoom;
+
+        cout << "Player: " << player.Name << "\n" << "Current Room Info: " << player.CurrentRoom.Name << "\n" << player.CurrentRoom.Description << "\n";
+
+        //game.Run();
+    }
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
 

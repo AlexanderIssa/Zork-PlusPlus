@@ -5,7 +5,7 @@ using namespace std;
 class Room
 {
 public:
-	string name;
-	string description;
+	string Name;
+	string Description;
 };
 

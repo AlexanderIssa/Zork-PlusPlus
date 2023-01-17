@@ -3,22 +3,37 @@
 #include "Room.h";
 #include<map>
 #include<string>
+#include<vector>
 
 class World
 {
 	public:
-			
-		Room Rooms[];
-		Item Items[];
-		map<string, Room>_roomsByName;
+		//Room Rooms[]
+		//Item Items[];
 
-		int test()
+		vector<Room> Rooms;
+		vector<Item> Items;
+
+		// map is equivalent to dictionary in C#
+		map<string, Room>_roomsByName;
+		map<string, Item>_itemsByName;
+
+		World() = default;
+		World (vector<Room> rooms, vector<Item> items)
 		{
-			for each (Room room in rooms)
+			Rooms = rooms;
+			Items = items;
+
+			// this is basically for each from C# "for (data_type  variable_name : container_type)"
+			for (auto room : rooms)
 			{
+				_roomsByName[room.Name] = room;
 
 			}
-			_roomsByName[room.name] = room;
-			return 0;
+
+			for (auto item : items)
+			{
+				_itemsByName[item.Name] = item;
+			}
 		}
 };

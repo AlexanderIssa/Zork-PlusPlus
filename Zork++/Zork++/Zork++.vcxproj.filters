@@ -53,5 +53,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Game.json">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

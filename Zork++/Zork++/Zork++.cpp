@@ -6,23 +6,44 @@
 #include "Item.h";
 #include "Room.h";
 #include "Player.h";
+#include <nlohmann/json.hpp>
+#include <fstream>
+
+
 using namespace std;
+using json = nlohmann::json;
+
+
 
 int main()
 {
     const string defaultRoomsFilename = "Content\Game.json";
-    //Game game = JsonConvert.DeserializeObkect<Game.(File.ReadAllText(gameFilename));
-    cout << "Welcome to Zork!\n";
+    //Game game = JsonConvert.DeserializeObject<Game.(File.ReadAllText(gameFilename));
+
+    //To create a json object by reading a JSON file:
+    //ifstream gameFile("game.json");
+    //json data = json::parse(gameFile);
+
+    cout << "Welcome to Zork! Insert you name below:\n";
+
+    Player player;
+    cin >> player.Name;
+
+    //list<int> _test = { 12, 5, 10, 9 };
+
+    //    for (int x : _test)
+    //    {
+    //        cout << x << '\n';
+    //    }
 
     Room TestRoom;
     TestRoom.name = "Test Room";
     TestRoom.description = "This is a Test Room";
 
-    Player Alex;
-    Alex.CurrentRoom = TestRoom;
+    
+    player.CurrentRoom = TestRoom;
 
-    //cout << TestRoom.name << " " << TestRoom.description<< "\n";
-    cout << "Player: Alex\n" << "Current Room Info: " << Alex.CurrentRoom.name << "\n" << Alex.CurrentRoom.description << "\n";
+    cout << "Player: " <<  player.Name << "\n" << "Current Room Info: " << player.CurrentRoom.name << "\n" << player.CurrentRoom.description << "\n";
     
     //game.Run();
 }

@@ -1,10 +1,29 @@
-﻿  Zork++.cpp
-F:\Microsoft Visual Studio\Projects\Zork++\Zork++\Zork++\Zork++.cpp(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-F:\Microsoft Visual Studio\Projects\Zork++\Zork++\Zork++\Zork++.cpp(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-F:\Microsoft Visual Studio\Projects\Zork++\Zork++\Zork++\Zork++.cpp(7,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-F:\Microsoft Visual Studio\Projects\Zork++\Zork++\Zork++\Room.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-F:\Microsoft Visual Studio\Projects\Zork++\Zork++\Zork++\Zork++.cpp(8,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-F:\Microsoft Visual Studio\Projects\Zork++\Zork++\Zork++\Player.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-F:\Microsoft Visual Studio\Projects\Zork++\Zork++\Zork++\Player.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-F:\Microsoft Visual Studio\Projects\Zork++\Zork++\Zork++\Zork++.cpp(13,41): warning C4129: 'G': unrecognized character escape sequence
-  Zork++.vcxproj -> F:\Microsoft Visual Studio\Projects\Zork++\Zork++\x64\Debug\Zork++.exe
+﻿  Game.cpp
+D:\Users\alex1\Documents\GitHub\Repos\Zork-PlusPlus\Zork++\Zork++\Game.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\Users\alex1\Documents\GitHub\Repos\Zork-PlusPlus\Zork++\Zork++\World.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\Users\alex1\Documents\GitHub\Repos\Zork-PlusPlus\Zork++\Zork++\World.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\Users\alex1\Documents\GitHub\Repos\Zork-PlusPlus\Zork++\Zork++\Room.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\Users\alex1\Documents\GitHub\Repos\Zork-PlusPlus\Zork++\Zork++\Game.cpp(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\Users\alex1\Documents\GitHub\Repos\Zork-PlusPlus\Zork++\Zork++\Game.cpp(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\Users\alex1\Documents\GitHub\Repos\Zork-PlusPlus\Zork++\Zork++\Game.cpp(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\Users\alex1\Documents\GitHub\Repos\Zork-PlusPlus\Zork++\Zork++\Player.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\Users\alex1\Documents\GitHub\Repos\Zork-PlusPlus\Zork++\Zork++\Player.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Player.cpp
+D:\Users\alex1\Documents\GitHub\Repos\Zork-PlusPlus\Zork++\Zork++\Player.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\Users\alex1\Documents\GitHub\Repos\Zork-PlusPlus\Zork++\Zork++\Player.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\Users\alex1\Documents\GitHub\Repos\Zork-PlusPlus\Zork++\Zork++\Room.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  World.cpp
+  Zork++.cpp
+D:\Users\alex1\Documents\GitHub\Repos\Zork-PlusPlus\Zork++\Zork++\Zork++.cpp(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\Users\alex1\Documents\GitHub\Repos\Zork-PlusPlus\Zork++\Zork++\Game.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\Users\alex1\Documents\GitHub\Repos\Zork-PlusPlus\Zork++\Zork++\World.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\Users\alex1\Documents\GitHub\Repos\Zork-PlusPlus\Zork++\Zork++\World.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\Users\alex1\Documents\GitHub\Repos\Zork-PlusPlus\Zork++\Zork++\Room.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\Users\alex1\Documents\GitHub\Repos\Zork-PlusPlus\Zork++\Zork++\Zork++.cpp(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\Users\alex1\Documents\GitHub\Repos\Zork-PlusPlus\Zork++\Zork++\Zork++.cpp(7,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\Users\alex1\Documents\GitHub\Repos\Zork-PlusPlus\Zork++\Zork++\Zork++.cpp(8,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\Users\alex1\Documents\GitHub\Repos\Zork-PlusPlus\Zork++\Zork++\Player.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\Users\alex1\Documents\GitHub\Repos\Zork-PlusPlus\Zork++\Zork++\Player.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\Users\alex1\Documents\GitHub\Repos\Zork-PlusPlus\Zork++\Zork++\Zork++.cpp(20,41): warning C4129: 'G': unrecognized character escape sequence
+  Generating Code...
+  Zork++.vcxproj -> D:\Users\alex1\Documents\GitHub\Repos\Zork-PlusPlus\Zork++\x64\Debug\Zork++.exe

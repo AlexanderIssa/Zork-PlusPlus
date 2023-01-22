@@ -1,25 +1,31 @@
 #pragma once
 #include "Item.h";
 #include "Room.h";
+#include "Player.h";
+#include <nlohmann/json.hpp>
 #include<map>
 #include<string>
 #include<vector>
 
-class World
+using json = nlohmann::json;
+
+namespace Zork
 {
+	class World
+	{
 	public:
 		//Room Rooms[]
 		//Item Items[];
 
 		vector<Room> Rooms;
 		vector<Item> Items;
-
+		Player player;
 		// map is equivalent to dictionary in C#
 		map<string, Room>_roomsByName;
 		map<string, Item>_itemsByName;
 
 		World() = default;
-		World (vector<Room> rooms, vector<Item> items)
+		World(vector<Room> rooms, vector<Item> items)
 		{
 			Rooms = rooms;
 			Items = items;
@@ -36,4 +42,8 @@ class World
 				_itemsByName[item.Name] = item;
 			}
 		}
+	};
+
+	void to_json(json& j, const World& w);
+	void from_json(const json& j, World& w);
 };

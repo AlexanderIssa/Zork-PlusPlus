@@ -3,8 +3,6 @@
 #include "Room.h";
 #include <nlohmann/json.hpp>
 #include <iostream>
-#include <iterator>
-#include <list>
 #include <string>
 
 //using namespace std;
@@ -23,8 +21,8 @@ namespace Zork
 		list<Item> _inventory;
 	};
 
-	void from_json(const json& j, Player& g);
-	void to_json(json& j, const Player& g);
+	void from_json(const json& j, Player& p);
+	void to_json(json& j, const Player& p);
 };
 
 

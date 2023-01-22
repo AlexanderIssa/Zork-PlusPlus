@@ -22,20 +22,40 @@ using json = nlohmann::json;
         ifstream gameFile("Game.json");
         json data = json::parse(gameFile);
 
-        //Zork::Game game;
+        Zork::Game game;
         Zork::Player player;
+        Zork::World world;
 
         // figure out how to convert json data into a Game class data
         //game = data.get<Zork::Game>();
-        player = data.get<Zork::Player>();
+        //player = data.get<Zork::Player>();
+        //world = data.get<Zork::World>();
+        game = data.get<Zork::Game>();
 
-        cout << player.Name << "\n";
+        //cout << player.Name << "\n";
+        cout << game.world.player.Name << "\n";
+        for (Zork::Room i : game.world.Rooms)
+        {
+            cout << i.Name << "\n";
+            cout << i.Description << "\n";
+        }
+        //for (Room i : world.Rooms)
+        //{
+        //    cout << i.Name << "\n";
+        //    cout << i.Description << "\n";
+        //}
+
+        //for (int i = 0; i < world.Rooms.size(); i++)
+        //{
+        //    cout << world.Rooms[i].Name << "\n";
+        //    cout << world.Rooms[i].Description << "\n";
+        //}
 
         cout << "Welcome to Zork! Insert you name below:\n";
 
         cin >> player.Name;
 
-        Room TestRoom;
+        Zork::Room TestRoom;
         TestRoom.Name = "Test Room";
         TestRoom.Description = "This is a Test Room";
 

@@ -1,3 +1,11 @@
 {
-  "Player": "Alex"
+  "World": {
+    "Player": "Alex",
+    "Rooms": [
+      {
+        "Name": "West of House",
+        "Description": "This is an open field west of a white house, with a boarded front door."
+      }
+    ]
+  }
 }

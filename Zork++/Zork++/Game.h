@@ -13,16 +13,13 @@ namespace Zork
     public:
         Game() = default;
 
+        World world;
+        Player player;
+
         Game(Player player)
         {
 
         }
-
-        string test;
-
-        World world;
-        Player player;
-
 
 
         //Game(World world, string startingLocation, int playerHealth)
@@ -32,15 +29,10 @@ namespace Zork
         //}
     };
 
-    //void from_json(const json& j, Game& g) {
-    //    //j.at("World").get_to(g.world);
-    //    j.at("Player").get_to(g.player.Name);
-    //};
+    void Run();
 
-    //void to_json(json& j, const Game& g) {
-    //    j = json{ {"Player", g.player.Name} };
-    //};
-
+    void from_json(const json& j, Game& g);
+    void to_json(json& j, const Game& g);
 };
 
 

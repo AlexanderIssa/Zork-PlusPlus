@@ -13,6 +13,8 @@ namespace Zork
 	public:
 		string Name;
 		string Description;
+
+		Room() = default;
 	};
 
 	void from_json(const json& j, Room& r);

@@ -13,8 +13,6 @@
 using namespace std;
 using json = nlohmann::json;
 
-//namespace Zork
-//{
     int main()
     {
 
@@ -23,61 +21,27 @@ using json = nlohmann::json;
         json data = json::parse(gameFile);
 
         Zork::Game game;
-        Zork::Player player;
-        Zork::World world;
+        /*Zork::Player player;
+        Zork::World world;*/
 
-        // figure out how to convert json data into a Game class data
-        //game = data.get<Zork::Game>();
-        //player = data.get<Zork::Player>();
-        //world = data.get<Zork::World>();
+        // Convert json data into a Game type var called game
         game = data.get<Zork::Game>();
 
-        //cout << player.Name << "\n";
-        cout << game.world.player.Name << "\n";
-        for (Zork::Room i : game.world.Rooms)
-        {
-            cout << i.Name << "\n";
-            cout << i.Description << "\n";
-        }
-        //for (Room i : world.Rooms)
+        // List of Rooms in the world
+        //for (Zork::Room i : game.world.Rooms)
         //{
         //    cout << i.Name << "\n";
         //    cout << i.Description << "\n";
         //}
 
-        //for (int i = 0; i < world.Rooms.size(); i++)
-        //{
-        //    cout << world.Rooms[i].Name << "\n";
-        //    cout << world.Rooms[i].Description << "\n";
-        //}
+        game.Run(game);
+        while (game.IsRunning)
+        {
+            cout << "> ";
+            cin >> game.inputString;
+            game.RunProgram(game.inputString);
+        }
 
-        cout << "Welcome to Zork! Insert you name below:\n";
-
-        cin >> player.Name;
-
-        Zork::Room TestRoom;
-        TestRoom.Name = "Test Room";
-        TestRoom.Description = "This is a Test Room";
-
-
-        player.CurrentRoom = TestRoom;
-
-        cout << "Player: " << player.Name << "\n" << "Current Room Info: " << player.CurrentRoom.Name << "\n" << player.CurrentRoom.Description << "\n";
-
-        //game.Run();
+        cout << "Thank you for playing!";
         return 0;
     };
-//};
-
-
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

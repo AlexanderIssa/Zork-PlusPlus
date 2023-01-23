@@ -8,6 +8,7 @@ using json = nlohmann::json;
 
 namespace Zork
 {
+	// When deserializing a JSON, when it hits "Player" set it to the Name
 	void from_json(const json& j, Player& p) {
 		j.at("Player").get_to(p.Name);
 	};

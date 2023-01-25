@@ -1,25 +1,47 @@
 #include "Game.h"
 #include "Item.h";
 #include "Room.h";
+#include "World.h";
 #include "Player.h";
 #include <string>
 #include <unordered_map>
 #include <map>
+#include <algorithm>
 
 using namespace std;
 
 namespace Zork
 {
+
+    int Game::compare_case_insensitive(string s1, string s2) {
+        //convert s1 and s2 into lower case strings
+        transform(s1.begin(), s1.end(), s1.begin(), ::tolower);
+        transform(s2.begin(), s2.end(), s2.begin(), ::tolower);
+        if (s1.compare(s2) == 0)
+            return 1; //The strings are same
+        return 0; //not matched
+    }
+
     void from_json(const json& j, Game& g) {
         //j.get_to(g);
         //j.at("Player").get_to(g.player.Name);
         j.at("World").get_to(g.world);
+        for (auto room : g.world.Rooms)
+        {
+            if (room.Name == j.at("StartingLocation"))
+            {
+                g.player.CurrentRoom = room;
+            }
+
+        }
+        //j.at("StartingLocation").get_to(g.player.CurrentRoom);
         //j.at("Player").get_to(g.world.player.Name);
     };
 
     void to_json(json& j, const Game& g) {
         //j = json{ {"Player", g.player.Name} };
         j = json{ {"World", g.world} };
+        j = json{ {"StartingLocation"}, g.player.CurrentRoom };
     };
 
     void Game::ToCommand(string commandString)
@@ -36,19 +58,13 @@ namespace Zork
         //map<string, Commands::commands> commandsMap;
         //commandsMap["quit"] = Commands::commands::Q;
 
-
-        //if (commandString == "quit")
-        //{
-        //    gCommand = Commands::commandsEnum::Q;
-        //}
-        //else
-        //{
-        //    gCommand = Commands::commandsEnum::Unknown;
-        //}
-
-        if (commandString.compare("quit") == 0)
+        if (compare_case_insensitive(commandString, "quit") || compare_case_insensitive(commandString, "q"))
         {
             command = gCommand::Quit;
+        }
+        else if (compare_case_insensitive(commandString, "look") || compare_case_insensitive(commandString, "l"))
+        {
+            command = gCommand::Look;
         }
         else
         {
@@ -56,12 +72,13 @@ namespace Zork
         }
     };
 
-    void Game::Run(Game game)
+    void Game::Run()
     {
         IsRunning = true;
-        game.world.player.CurrentRoom = game.world.Rooms[0];
+        player.CurrentRoom = world.Rooms[0];
 
-        cout << "Player: " << game.world.player.Name << "\n" << "Current Room Info: " << game.world.player.CurrentRoom.Name << "\n" << game.world.player.CurrentRoom.Description << "\n";
+        cout << "Player: " << player.Name << "\n" << "Current Room Info: " << player.CurrentRoom.Name << "\n" << player.CurrentRoom.Description << "\n";
+
     };
 
     void Game::RunProgram(string inputString)
@@ -73,6 +90,10 @@ namespace Zork
         {
         case gCommand::Quit:
             IsRunning = false;
+            break;
+
+        case gCommand::Look:
+            cout << player.CurrentRoom.Description << "\n";
             break;
 
         case gCommand::Unknown:

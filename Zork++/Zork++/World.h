@@ -1,7 +1,7 @@
 #pragma once
 #include "Item.h";
 #include "Room.h";
-#include "Player.h";
+//#include "Player.h"; this causes identifier errors
 #include <nlohmann/json.hpp>
 #include<map>
 #include<string>
@@ -19,7 +19,7 @@ namespace Zork
 
 		vector<Room> Rooms;
 		vector<Item> Items;
-		Player player;
+		//Player player;
 		// map is equivalent to dictionary in C#
 		map<string, Room>_roomsByName;
 		map<string, Item>_itemsByName;

@@ -21,13 +21,40 @@ namespace Zork
         enum gCommand
         {
             Quit,
-            Unknown
+            Unknown,
+            Look
         };
         gCommand command;
 
+        void setPlayer(Player jplayer, World jworld, Room startingLocation)
+        {
+            player = jplayer;
+            player.setPlayerInfo(jworld, startingLocation);
+        }
+        Player getPlayer()
+        {
+            return player;
+        }
+
+        void setWorld(World jworld)
+        {
+            world = jworld;
+        }
+        World getWorld()
+        {
+            return world;
+        }
+
         Game() = default;
 
-        void Run(Game game);
+        Game(Player jplayer, World jworld, Room startingLocation)
+        {
+            world = jworld;
+            setPlayer(jplayer, world, startingLocation);
+        }
+
+        void Run();
+        int compare_case_insensitive(string s1, string s2);
         void RunProgram(string inputString);
         void ToCommand(string commandString);
 

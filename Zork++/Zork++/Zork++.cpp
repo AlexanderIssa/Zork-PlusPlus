@@ -8,6 +8,7 @@
 #include "Game.h";
 #include "Item.h";
 #include "Room.h";
+#include "World.h";
 #include "Player.h";
 
 using namespace std;
@@ -20,21 +21,22 @@ using json = nlohmann::json;
         ifstream gameFile("Game.json");
         json data = json::parse(gameFile);
 
-        Zork::Game game;
-        /*Zork::Player player;
-        Zork::World world;*/
+        //Zork::Game game;
 
         // Convert json data into a Game type var called game
-        game = data.get<Zork::Game>();
-
-        // List of Rooms in the world
+        Zork::Game jgame = data.get<Zork::Game>();
+        //Zork::Game game(jgame.world, jgame.player);
+        Zork::Game game(jgame.player, jgame.world, jgame.player.CurrentRoom);
+        //game.setWorld(jgame.world);
+        //game.setPlayer(jgame.player);
+        ////List of Rooms in the world
         //for (Zork::Room i : game.world.Rooms)
         //{
         //    cout << i.Name << "\n";
         //    cout << i.Description << "\n";
         //}
 
-        game.Run(game);
+        game.Run();
         while (game.IsRunning)
         {
             cout << "> ";

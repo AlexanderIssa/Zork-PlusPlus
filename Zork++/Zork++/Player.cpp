@@ -1,10 +1,4 @@
-#include "World.h"
 #include "Player.h"
-#include "Item.h"
-#include "Room.h"
-#include <nlohmann/json.hpp>
-
-using json = nlohmann::json;
 
 namespace Zork
 {
@@ -16,4 +10,9 @@ namespace Zork
 	void to_json(json& j, const Player& p) {
 		//j = json{ {"Player", p.Name} };
 	};
+
+	Player::Player(World world, Room startingLocation):_world(world), _currentRoom(startingLocation), CurrentRoom(_currentRoom) // constructor with 2 params
+	{
+	}
+
 };

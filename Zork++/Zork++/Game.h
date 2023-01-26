@@ -2,8 +2,13 @@
 #include "World.h";
 #include "Player.h"
 #include "Commands.h"
+#include "Item.h";
+#include "Room.h"
 #include <string>
 #include <nlohmann/json.hpp>
+#include <unordered_map>
+#include <map>
+#include <algorithm>
 
 using json = nlohmann::json;
 
@@ -26,36 +31,27 @@ namespace Zork
         };
         gCommand command;
 
-        void setPlayer(Player jplayer, World jworld, Room startingLocation)
+        void setPlayer(World jworld, Room startingLocation)
         {
-            player = jplayer;
             player.setPlayerInfo(jworld, startingLocation);
         }
-        Player getPlayer()
-        {
-            return player;
-        }
 
-        void setWorld(World jworld)
-        {
-            world = jworld;
-        }
-        World getWorld()
-        {
-            return world;
-        }
+        Player getPlayer() { return player; } //inline function
+
+        void setWorld(World jworld) { world = jworld; }
+        World getWorld() { return world; }
 
         Game() = default;
 
-        Game(Player jplayer, World jworld, Room startingLocation)
+        Game(World jworld, Room startingLocation)
         {
             world = jworld;
-            setPlayer(jplayer, world, startingLocation);
+            setPlayer(world, startingLocation);
         }
 
         void Run();
         int compare_case_insensitive(string s1, string s2);
-        void RunProgram(string inputString);
+        void ProcessInput(string inputString);
         void ToCommand(string commandString);
 
     };

@@ -1,12 +1,4 @@
 #include "Game.h"
-#include "Item.h";
-#include "Room.h";
-#include "World.h";
-#include "Player.h";
-#include <string>
-#include <unordered_map>
-#include <map>
-#include <algorithm>
 
 using namespace std;
 
@@ -23,23 +15,23 @@ namespace Zork
     }
 
     void from_json(const json& j, Game& g) {
-        //j.get_to(g);
-        //j.at("Player").get_to(g.player.Name);
         j.at("World").get_to(g.world);
         for (auto room : g.world.Rooms)
         {
             if (room.Name == j.at("StartingLocation"))
             {
-                g.player.CurrentRoom = room;
+                g.world.StartingRoom = room;
             }
-
         }
-        //j.at("StartingLocation").get_to(g.player.CurrentRoom);
-        //j.at("Player").get_to(g.world.player.Name);
+        // psuedo code, somehow check to see if starting room is null or empty, if it is then starting location is bad
+        /*if (g.world.StartingRoom == null/empty)
+        {
+            cout << "Invalid starting location!\n";
+            Application.Quit();
+        }*/
     };
 
     void to_json(json& j, const Game& g) {
-        //j = json{ {"Player", g.player.Name} };
         j = json{ {"World", g.world} };
         j = json{ {"StartingLocation"}, g.player.CurrentRoom };
     };
@@ -75,13 +67,11 @@ namespace Zork
     void Game::Run()
     {
         IsRunning = true;
-        player.CurrentRoom = world.Rooms[0];
 
-        cout << "Player: " << player.Name << "\n" << "Current Room Info: " << player.CurrentRoom.Name << "\n" << player.CurrentRoom.Description << "\n";
-
+        cout << "Current Room Info: " << player.CurrentRoom.Name << "\n" << player.CurrentRoom.Description << "\n";
     };
 
-    void Game::RunProgram(string inputString)
+    void Game::ProcessInput(string inputString)
     {
         //cout << inputString << "\n";
 

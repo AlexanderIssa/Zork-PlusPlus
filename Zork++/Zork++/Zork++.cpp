@@ -1,18 +1,8 @@
-// Zork++.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
-#include <iostream>
-#include <nlohmann/json.hpp>
-#include <fstream>
-#include <string>
 #include "Game.h";
-#include "Item.h";
-#include "Room.h";
-#include "World.h";
-#include "Player.h";
+#include <iostream>
+#include <fstream>
 
 using namespace std;
-using json = nlohmann::json;
 
     int main()
     {
@@ -21,14 +11,10 @@ using json = nlohmann::json;
         ifstream gameFile("Game.json");
         json data = json::parse(gameFile);
 
-        //Zork::Game game;
-
         // Convert json data into a Game type var called game
         Zork::Game jgame = data.get<Zork::Game>();
-        //Zork::Game game(jgame.world, jgame.player);
-        Zork::Game game(jgame.player, jgame.world, jgame.player.CurrentRoom);
-        //game.setWorld(jgame.world);
-        //game.setPlayer(jgame.player);
+        Zork::Game game(jgame.world, jgame.world.StartingRoom);
+
         ////List of Rooms in the world
         //for (Zork::Room i : game.world.Rooms)
         //{
@@ -41,7 +27,7 @@ using json = nlohmann::json;
         {
             cout << "> ";
             cin >> game.inputString;
-            game.RunProgram(game.inputString);
+            game.ProcessInput(game.inputString);
         }
 
         cout << "Thank you for playing!";

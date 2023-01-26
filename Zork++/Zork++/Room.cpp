@@ -1,7 +1,4 @@
 #include "Room.h"
-#include <nlohmann/json.hpp>
-
-using json = nlohmann::json;
 
 namespace Zork
 {

@@ -22,14 +22,7 @@ namespace Zork
         Player player;
         bool IsRunning;
         string inputString;
-        //Commands::commandsEnum gCommand = Commands::commandsEnum::Unknown;
-        enum gCommand
-        {
-            Quit,
-            Unknown,
-            Look
-        };
-        gCommand command;
+        Commands::commandsEnum command;
 
         void setPlayer(World jworld, Room startingLocation)
         {
@@ -51,6 +44,7 @@ namespace Zork
 
         void Run();
         int compare_case_insensitive(string s1, string s2);
+        string LowercaseString(string inputString);
         void ProcessInput(string inputString);
         void ToCommand(string commandString);
 

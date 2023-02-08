@@ -14,6 +14,13 @@ namespace Zork
         return 0; //not matched
     }
 
+    // function to convert an entire string to lowercase 
+    string Game::LowercaseString(string s)
+    {
+        transform(s.begin(), s.end(), s.begin(), ::tolower);
+        return s;
+    }
+
     void from_json(const json& j, Game& g) {
         j.at("World").get_to(g.world);
         for (auto room : g.world.Rooms)
@@ -38,30 +45,17 @@ namespace Zork
 
     void Game::ToCommand(string commandString)
     {
-        //static unordered_map<string, Commands::commands> const table = { {"quit",Commands::commands::Quit} };
-        //auto it = table.find(commandString);
-        //if (it != table.end()) {
-        //    return it->Commands::commands;
-        //}
-        //else { error() }
-
-        //std::map<std::string, Commands::commands> xmap = boost::assign::map_list_of("A", A)("B", B)("C", C);
-
         //map<string, Commands::commands> commandsMap;
         //commandsMap["quit"] = Commands::commands::Q;
 
-        if (compare_case_insensitive(commandString, "quit") || compare_case_insensitive(commandString, "q"))
-        {
-            command = gCommand::Quit;
+        commandString = LowercaseString(commandString);
+
+        static unordered_map<string, Commands::commandsEnum> const commandsMap = { {"quit", Commands::commandsEnum::Quit}, {"q", Commands::commandsEnum::Quit}, {"look", Commands::commandsEnum::Look}, {"l", Commands::commandsEnum::Look} };
+        auto it = commandsMap.find(commandString);
+        if (it != commandsMap.end()) {
+            command = it->second;
         }
-        else if (compare_case_insensitive(commandString, "look") || compare_case_insensitive(commandString, "l"))
-        {
-            command = gCommand::Look;
-        }
-        else
-        {
-            command = gCommand::Unknown;
-        }
+        else { command = Commands::commandsEnum::Unknown; }
     };
 
     void Game::Run()
@@ -78,15 +72,51 @@ namespace Zork
         ToCommand(inputString);
         switch (command)
         {
-        case gCommand::Quit:
+        case Zork::Commands::commandsEnum::Quit:
             IsRunning = false;
             break;
 
-        case gCommand::Look:
+        case Zork::Commands::commandsEnum::Look:
             cout << player.CurrentRoom.Description << "\n";
             break;
 
-        case gCommand::Unknown:
+        case Zork::Commands::commandsEnum::North:
+            break;
+        case Zork::Commands::commandsEnum::South:
+            break;
+        case Zork::Commands::commandsEnum::East:
+            break;
+        case Zork::Commands::commandsEnum::West:
+            break;
+
+        case Zork::Commands::commandsEnum::Take:
+            break;
+
+        case Zork::Commands::commandsEnum::Drop:
+            break;
+
+        case Zork::Commands::commandsEnum::Inventory:
+            break;
+
+        case Zork::Commands::commandsEnum::Score:
+            break;
+
+        case Zork::Commands::commandsEnum::Reward:
+            break;
+
+        case Zork::Commands::commandsEnum::Attack:
+            break;
+
+        case Zork::Commands::commandsEnum::Health:
+            break;
+
+        case Zork::Commands::commandsEnum::Damage:
+            break;
+
+        case Zork::Commands::commandsEnum::Use:
+            break;
+
+        case Zork::Commands::commandsEnum::Unknown:
             cout << "Unknown Command." << "\n";
             break;
 

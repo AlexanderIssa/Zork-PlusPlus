@@ -3,7 +3,7 @@ namespace Zork
     class Commands
     {
     public:
-        enum commandsEnum
+        enum struct commandsEnum
         {
             Quit,
             Q = Quit,

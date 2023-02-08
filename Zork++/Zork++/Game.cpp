@@ -50,12 +50,20 @@ namespace Zork
 
         commandString = LowercaseString(commandString);
 
-        static unordered_map<string, Commands::commandsEnum> const commandsMap = { {"quit", Commands::commandsEnum::Quit}, {"q", Commands::commandsEnum::Quit}, {"look", Commands::commandsEnum::Look}, {"l", Commands::commandsEnum::Look} };
-        auto it = commandsMap.find(commandString);
+        static unordered_map<string, Commands::commandsEnum> const commandsMap = { {"quit", Commands::commandsEnum::Quit}, {"q", Commands::commandsEnum::Quit}, {"look", Commands::commandsEnum::Look}, {"l", Commands::commandsEnum::Look}, {"north", Commands::commandsEnum::North} };
+        auto it = commandsMap.find(commandString); // use commandString as a key in the commandsMap and set "it" as the value returned
         if (it != commandsMap.end()) {
+            // if "it" is not at the end of the map then set passed command as the stored value
             command = it->second;
         }
         else { command = Commands::commandsEnum::Unknown; }
+    };
+
+    Directions::DirectionsEnum Game::CommandToDirection(Commands::commandsEnum command)
+    {
+        static unordered_map<Commands::commandsEnum, Directions::DirectionsEnum> directionsMap;
+
+        return Directions::DirectionsEnum::North;
     };
 
     void Game::Run()
@@ -81,12 +89,10 @@ namespace Zork
             break;
 
         case Zork::Commands::commandsEnum::North:
-            break;
         case Zork::Commands::commandsEnum::South:
-            break;
         case Zork::Commands::commandsEnum::East:
-            break;
         case Zork::Commands::commandsEnum::West:
+            //Directions direction = (Directions)command;
             break;
 
         case Zork::Commands::commandsEnum::Take:

@@ -3,7 +3,8 @@
 #include "Player.h"
 #include "Commands.h"
 #include "Item.h";
-#include "Room.h"
+#include "Room.h";
+#include "Directions.h";
 #include <string>
 #include <nlohmann/json.hpp>
 #include <unordered_map>
@@ -45,6 +46,7 @@ namespace Zork
         void Run();
         int compare_case_insensitive(string s1, string s2);
         string LowercaseString(string inputString);
+        Directions::DirectionsEnum CommandToDirection(Commands::commandsEnum command);
         void ProcessInput(string inputString);
         void ToCommand(string commandString);
 

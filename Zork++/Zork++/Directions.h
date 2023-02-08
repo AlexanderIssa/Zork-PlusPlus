@@ -1,16 +1,15 @@
 #pragma once
-#include "Commands.h";
 namespace Zork
 {
 	class Directions
 	{
 	public:
-		enum directions
+		enum DirectionsEnum
 		{
-			North = Commands::commands::North,
-			South = Commands::commands::South,
-			East = Commands::commands::East,
-			West = Commands::commands::West
+			North,
+			South,
+			East,
+			West
 		};
 	};
 }

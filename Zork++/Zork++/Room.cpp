@@ -7,6 +7,7 @@ namespace Zork
 	{
 		j.at("Name").get_to(r.Name);
 		j.at("Description").get_to(r.Description);
+		//j.at("NeighborNames").get_to(r.NeighborNames);
 	};
 
 	void to_json(json& j, const Room& r)

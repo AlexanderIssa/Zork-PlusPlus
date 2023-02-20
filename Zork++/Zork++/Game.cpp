@@ -59,11 +59,18 @@ namespace Zork
         else { command = Commands::commandsEnum::Unknown; }
     };
 
-    Directions::DirectionsEnum Game::CommandToDirection(Commands::commandsEnum command)
+    Directions::DirectionsEnum Game::CommandToDirection(Commands::commandsEnum commandPass)
     {
-        static unordered_map<Commands::commandsEnum, Directions::DirectionsEnum> directionsMap;
+        Directions::DirectionsEnum directionP = Directions::DirectionsEnum::Unknown;
+        static unordered_map<Commands::commandsEnum, Directions::DirectionsEnum> directionsMap = { {Commands::commandsEnum::North, Directions::DirectionsEnum::North}, {Commands::commandsEnum::South, Directions::DirectionsEnum::South}, {Commands::commandsEnum::East, Directions::DirectionsEnum::East}, {Commands::commandsEnum::West, Directions::DirectionsEnum::West} };
+        auto it = directionsMap.find(commandPass); // use commandString as a key in the commandsMap and set "it" as the value returned
+        if (it != directionsMap.end()) {
+            // if "it" is not at the end of the map then set passed command as the stored value
+            directionP = it->second;
+        }
+        else { directionP = Directions::DirectionsEnum::Unknown; }
 
-        return Directions::DirectionsEnum::North;
+        return directionP;
     };
 
     void Game::Run()
@@ -93,6 +100,7 @@ namespace Zork
         case Zork::Commands::commandsEnum::East:
         case Zork::Commands::commandsEnum::West:
             //Directions direction = (Directions)command;
+            direction = CommandToDirection(command);
             break;
 
         case Zork::Commands::commandsEnum::Take:

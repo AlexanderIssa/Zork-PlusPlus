@@ -9,7 +9,8 @@ namespace Zork
 			North,
 			South,
 			East,
-			West
+			West,
+			Unknown
 		};
 	};
 }

@@ -24,6 +24,7 @@ namespace Zork
         bool IsRunning;
         string inputString;
         Commands::commandsEnum command;
+        Directions::DirectionsEnum direction;
 
         void setPlayer(World jworld, Room startingLocation)
         {

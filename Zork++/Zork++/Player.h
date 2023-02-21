@@ -40,7 +40,7 @@ namespace Zork
 	};
 
 	void from_json(const json& j, Player& p);
-	void to_json(json& j, const Player& p);
+	//void to_json(json& j, const Player& p);
 };
 
 

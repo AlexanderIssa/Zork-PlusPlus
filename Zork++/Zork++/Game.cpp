@@ -25,6 +25,7 @@ namespace Zork
         j.at("World").get_to(g.world);
         for (auto room : g.world.Rooms)
         {
+            room.UpdateNeighbors(g.world.Rooms);
             if (room.Name == j.at("StartingLocation"))
             {
                 g.world.StartingRoom = room;
@@ -36,12 +37,19 @@ namespace Zork
             cout << "Invalid starting location!\n";
             Application.Quit();
         }*/
+        //for (auto room : g.world.Rooms)
+        //{
+        //    if (room.Name == j.at("North"))
+        //    {
+        //        g.world.Rooms.neighbor.north = room;
+        //    }
+        //}
     };
 
-    void to_json(json& j, const Game& g) {
-        j = json{ {"World", g.world} };
-        j = json{ {"StartingLocation"}, g.player.CurrentRoom };
-    };
+    //void to_json(json& j, const Game& g) {
+    //    j = json{ {"World", g.world} };
+    //    j = json{ {"StartingLocation"}, g.player.CurrentRoom };
+    //};
 
     void Game::ToCommand(string commandString)
     {
@@ -50,7 +58,7 @@ namespace Zork
 
         commandString = LowercaseString(commandString);
 
-        static unordered_map<string, Commands::commandsEnum> const commandsMap = { {"quit", Commands::commandsEnum::Quit}, {"q", Commands::commandsEnum::Quit}, {"look", Commands::commandsEnum::Look}, {"l", Commands::commandsEnum::Look}, {"north", Commands::commandsEnum::North} };
+        static unordered_map<string, Commands::commandsEnum> const commandsMap = { {"quit", Commands::commandsEnum::Quit}, {"q", Commands::commandsEnum::Quit}, {"look", Commands::commandsEnum::Look}, {"l", Commands::commandsEnum::Look}, {"north", Commands::commandsEnum::North}, {"south", Commands::commandsEnum::South}, {"east", Commands::commandsEnum::East}, {"west", Commands::commandsEnum::West} };
         auto it = commandsMap.find(commandString); // use commandString as a key in the commandsMap and set "it" as the value returned
         if (it != commandsMap.end()) {
             // if "it" is not at the end of the map then set passed command as the stored value
@@ -93,6 +101,9 @@ namespace Zork
 
         case Zork::Commands::commandsEnum::Look:
             cout << player.CurrentRoom.Description << "\n";
+            for (auto const& pair : player.CurrentRoom.NeighborNames) {
+                cout << "{" << pair.first << ": " << pair.second << "}\n";
+            }
             break;
 
         case Zork::Commands::commandsEnum::North:
@@ -101,6 +112,7 @@ namespace Zork
         case Zork::Commands::commandsEnum::West:
             //Directions direction = (Directions)command;
             direction = CommandToDirection(command);
+            cout << direction << "\n";
             break;
 
         case Zork::Commands::commandsEnum::Take:

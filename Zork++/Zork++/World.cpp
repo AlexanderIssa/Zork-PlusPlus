@@ -7,10 +7,10 @@ namespace Zork
 		j.at("Rooms").get_to(w.Rooms);
 	};
 
-	void to_json(json& j, const World& w) {
-		j = json{ {"World", w} };
-		j = json{ {"Rooms", w.Rooms} };
-	};
+	//void to_json(json& j, const World& w) {
+	//	j = json{ {"World", w} };
+	//	j = json{ {"Rooms", w.Rooms} };
+	//};
 
 	World::World(vector<Room> rooms, vector<Item> items)
 	{

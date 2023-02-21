@@ -14,28 +14,36 @@ namespace Zork
 	public:
 		string Name;
 		string Description;
-		static map<Directions::DirectionsEnum, Room> Neighbors;
-		map<string, Room> NeighborNames;
-		Room() = default;
+		map<Directions::DirectionsEnum, Room> Neighbors;
+		map<string, string> NeighborNames;
+
+		//Neighbors neighbors;
+		//NLOHMANN_DEFINE_TYPE_INTRUSIVE(Room, Name, Description, Neighbors);
+		//json j_list_of_pairs = json::array({ {"one", 1}, {"two", 2} });
+		//Room() = default;
+		Directions::DirectionsEnum ToDirection(string key);
+		Room ToRoom(string key, vector<Room> rv);
+		void UpdateNeighbors(vector<Room> rv)
+		{
+			for (auto pair : NeighborNames) {
+				cout << "{" << pair.first << ": " << pair.second << "}\n";
+				directionKey = ToDirection(pair.first);
+				Room room = ToRoom(pair.second, rv);
+				Neighbors[directionKey] = room;
+			}
+
+
+		};
+
+		Room()
+		{
+		}
 
 	private:
 		//map<string, Room> NeighborNames;
+		Directions::DirectionsEnum directionKey;
 	};
 
 	void from_json(const json& j, Room& r);
-	void to_json(json& j, const Room& r);
-
-	//	// When being deserialized, assign certain data from the JSON file into specific variables within the Room class
-	//void from_json(const json& j, Room& r)
-	//{
-	//	j.at("Name").get_to(r.Name);
-	//	j.at("Description").get_to(r.Description);
-	//	//j.at("NeighborNames").get_to(r.NeighborNames);
-	//};
-
-	//void to_json(json& j, const Room& r)
-	//{
-	//	j = json{ {"Name", r.Name} };
-	//	j = json{ {"Description", r.Description} };
-	//};
+	//void to_json(json& j, const Room& r);
 };

@@ -2,7 +2,7 @@
 
 namespace Zork
 {
-	Directions::DirectionsEnum ToDirection(string key)
+	Directions::DirectionsEnum Room::ToDirection(string key)
 	{
 		Directions::DirectionsEnum directionP = Directions::DirectionsEnum::Unknown;
 		static unordered_map<string, Directions::DirectionsEnum> directionsMap = { {"North", Directions::DirectionsEnum::North}, {"South", Directions::DirectionsEnum::South}, {"East", Directions::DirectionsEnum::East}, {"West", Directions::DirectionsEnum::West}};
@@ -16,7 +16,7 @@ namespace Zork
 		return directionP;
 	}
 
-	Room ToRoom(string key, vector<Room> rv)
+	Room Room::ToRoom(string key, vector<Room> rv)
 	{
 		Room roomToSend;
 		for (auto room : rv)
@@ -36,6 +36,7 @@ namespace Zork
 		j.at("Name").get_to(r.Name);
 		j.at("Description").get_to(r.Description);
 		j.at("/NeighborNames"_json_pointer).get_to(r.NeighborNames);
+		//UpdateNeighbors();
 		/*for (auto const& pair : r.NeighborNames) {
 			cout << "{" << pair.first << ": " << pair.second << "}\n";
 			directionKey = ToDirection(pair.first);

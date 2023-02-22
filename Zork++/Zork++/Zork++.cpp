@@ -13,7 +13,7 @@ using namespace std;
 
         // Convert json data into a Game type var called game
         Zork::Game jgame = data.get<Zork::Game>();
-        Zork::Game game(jgame.world, jgame.world.StartingRoom);
+        Zork::Game game(jgame.world, jgame.startingLocation);
 
         ////List of Rooms in the world
         //for (Zork::Room i : game.world.Rooms)

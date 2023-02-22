@@ -23,14 +23,15 @@ namespace Zork
 
     void from_json(const json& j, Game& g) {
         j.at("World").get_to(g.world);
-        for (auto room : g.world.Rooms)
-        {
-            room.UpdateNeighbors(g.world.Rooms);
-            if (room.Name == j.at("StartingLocation"))
-            {
-                g.world.StartingRoom = room;
-            }
-        }
+        j.at("StartingLocation").get_to(g.startingLocation);
+        //for (auto room : g.world.Rooms)
+        //{
+        //    //room.UpdateNeighbors(g.world.Rooms);
+        //    if (room.Name == j.at("StartingLocation"))
+        //    {
+        //        g.player.CurrentRoom = room;
+        //    }
+        //}
         // psuedo code, somehow check to see if starting room is null or empty, if it is then starting location is bad
         /*if (g.world.StartingRoom == null/empty)
         {
@@ -90,8 +91,6 @@ namespace Zork
 
     void Game::ProcessInput(string inputString)
     {
-        //cout << inputString << "\n";
-
         ToCommand(inputString);
         switch (command)
         {
@@ -101,8 +100,8 @@ namespace Zork
 
         case Zork::Commands::commandsEnum::Look:
             cout << player.CurrentRoom.Description << "\n";
-            for (auto const& pair : player.CurrentRoom.NeighborNames) {
-                cout << "{" << pair.first << ": " << pair.second << "}\n";
+            for (auto const& pair : player.CurrentRoom.Neighbors) {
+                cout << "{" << pair.first << ": " << pair.second.Name << "}\n";
             }
             break;
 
@@ -110,9 +109,8 @@ namespace Zork
         case Zork::Commands::commandsEnum::South:
         case Zork::Commands::commandsEnum::East:
         case Zork::Commands::commandsEnum::West:
-            //Directions direction = (Directions)command;
             direction = CommandToDirection(command);
-            cout << direction << "\n";
+            player.Move(direction);
             break;
 
         case Zork::Commands::commandsEnum::Take:
@@ -149,5 +147,7 @@ namespace Zork
         default:
             break;
         }
+        cout << "Current Room: " << player.CurrentRoom.Name << "\n";
+
     };
 }

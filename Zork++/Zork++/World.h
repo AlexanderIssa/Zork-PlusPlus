@@ -16,17 +16,23 @@ namespace Zork
 	public:
 		vector<Room> Rooms;
 		vector<Item> Items;
+		// map is equivalent to dictionary in C#
+		map<string, Room> RoomsByName;
+		map<string, Item> ItemsByName;
 
 		Room StartingRoom;
 
-		// map is equivalent to dictionary in C#
+		World() = default;
+		World(vector<Room> rooms);
+		World(vector<Room> rooms, vector<Item> items);
+
+		void setRooms();
+
+	private:
 		map<string, Room>_roomsByName;
 		map<string, Item>_itemsByName;
-
-		World() = default;
-		World(vector<Room> rooms, vector<Item> items);
 	};
 
-	void to_json(json& j, const World& w);
+	//void to_json(json& j, const World& w);
 	void from_json(const json& j, World& w);
 };

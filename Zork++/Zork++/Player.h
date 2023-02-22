@@ -23,12 +23,28 @@ namespace Zork
 		Player(World world, Room startingLocation);
 
 
-		void setPlayerInfo(World world, Room startingLocation)
+		void setPlayerInfo(World world, string startingLocation)
 		{
+			//cout << "STARTING LOCATION: " << startingLocation << "\n";
 			_world = world;
-			_currentRoom = startingLocation;
+
+			// for some reason room gets neighbors but the specific room in _world.Rooms never gets neighbors and CurrentRoom is the only room with neighbors at the end of this function
+			for (auto room : _world.Rooms)
+			{
+				cout << room.Name << ": " << room.Description << "\n";
+				room.UpdateNeighbors(_world.RoomsByName);
+
+				if (room.Name == startingLocation)
+				{
+					_currentRoom = room;
+				}
+			}
+
 			CurrentRoom = _currentRoom;
 		}
+
+
+		void Move(Directions::DirectionsEnum direction);
 
 	private:
 		World _world;

@@ -22,14 +22,9 @@ namespace Zork
         World world;
         Player player;
         bool IsRunning;
-        string inputString;
+        string inputString, startingLocation;
         Commands::commandsEnum command;
         Directions::DirectionsEnum direction;
-
-        void setPlayer(World jworld, Room startingLocation)
-        {
-            player.setPlayerInfo(jworld, startingLocation);
-        }
 
         Player getPlayer() { return player; } //inline function
 
@@ -38,10 +33,12 @@ namespace Zork
 
         Game() = default;
 
-        Game(World jworld, Room startingLocation)
+        Game(World jworld, string jStartingLocation)
         {
             world = jworld;
-            setPlayer(world, startingLocation);
+            world.setRooms();
+            startingLocation = jStartingLocation;
+            player.setPlayerInfo(world, startingLocation);
         }
 
         void Run();

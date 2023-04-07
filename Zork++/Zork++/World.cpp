@@ -33,6 +33,28 @@ namespace Zork
 		//}
 	}
 
+	void World::UpdateRoomNeighbors()
+	{
+		for (int i = 0; i < Rooms.size(); i++)
+		{
+			Rooms[i].UpdateNeighbors(RoomsByName);
+		}
+		// RoomsByName never gets neighbors yet we use that map to assign neighbors
+		// In Zork C# RoomsByName somehow gets it's rooms to also start updating and gives them neighbors
+		// it seems that all rooms in Rooms.cs in C# are connected in the world, I might be creating seperate instances of rooms here
+
+		for (int i = 0; i < Rooms.size(); i++)
+		{
+			Rooms[i].UpdateNeighbors2(RoomsByName, Rooms);
+		}
+
+		// this function does not update the neighbors of THIS world's rooms, it only updates room var's neighbors, WHY?? 
+		//for (Room room : this->Rooms)
+		//{
+		//	room.UpdateNeighbors(this->RoomsByName);
+		//}
+	}
+
 	World::World(vector<Room> rooms)
 	{
 		Rooms = rooms;

@@ -16,6 +16,7 @@ namespace Zork
 		string Name;
 		string Description;
 		map<Directions::DirectionsEnum, Room> Neighbors;
+		//map<Directions::DirectionsEnum, string> NeighborNames;
 		map<string, string> NeighborNames;
 
 		//NLOHMANN_DEFINE_TYPE_INTRUSIVE(Room, Name, Description, Neighbors);
@@ -24,19 +25,30 @@ namespace Zork
 		Directions::DirectionsEnum ToDirection(string key);
 		Room ToRoom(string key, vector<Room> rv);
 
-		void UpdateNeighbors(map<string, Room> RoomsByName)
+		void UpdateNeighbors(map<string, Room> RoomsByName) //  //Zork::World world
 		{
-			//cout << Name << ":\n";
 			for(auto neighborName : NeighborNames)
 			{
-				cout << "{" << neighborName.first << ": " << neighborName.second << "}\n";
 				//_neighbors.insert(neighborName.first, world.RoomsByName[neighborName.second]);
+				//_neighbors[neighborName.first] = RoomsByName[neighborName.second];
+
 				directionKey = ToDirection(neighborName.first);
 				_neighbors[directionKey] = RoomsByName[neighborName.second];
-				//cout << "RoomsByName Room: " << RoomsByName[neighborName.second].Name << "\n";
 			}
 
+			//NeighborNames = null;
 			Neighbors = _neighbors;
+			//cout << Name << ":\n";
+			//for(auto neighborName : NeighborNames)
+			//{
+			//	cout << "{" << neighborName.first << ": " << neighborName.second << "}\n";
+			//	//_neighbors.insert(neighborName.first, world.RoomsByName[neighborName.second]);
+			//	directionKey = ToDirection(neighborName.first);
+			//	_neighbors[directionKey] = RoomsByName[neighborName.second];
+			//	//cout << "RoomsByName Room: " << RoomsByName[neighborName.second].Name << "\n";
+			//}
+
+			//Neighbors = _neighbors;
 
 			for (auto neighbor: Neighbors)
 			{
@@ -50,6 +62,26 @@ namespace Zork
 
 				//	Neighbors[directionKey] = ToRoom(pair.second, rv);
 				//}
+		};
+
+		void UpdateNeighbors2(map<string, Room> RoomsByName, vector<Room> wRooms) //  //Zork::World world
+		{
+			for (auto neighborName : NeighborNames)
+			{
+				directionKey = ToDirection(neighborName.first);
+				//_neighbors[directionKey] = RoomsByName[neighborName.second];
+				_neighbors[directionKey] = wRooms[2]; // the neighbor's neighbor does not exist
+
+
+			}
+
+			//NeighborNames = null;
+			Neighbors = _neighbors;
+
+			for (auto neighbor : Neighbors)
+			{
+				cout << neighbor.first << " " << neighbor.second.Name << "\n";
+			}
 		};
 
 		Room()

@@ -27,6 +27,7 @@ namespace Zork
 		World(vector<Room> rooms, vector<Item> items);
 
 		void setRooms();
+		void UpdateRoomNeighbors();
 
 	private:
 		map<string, Room>_roomsByName;

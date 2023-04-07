@@ -11,19 +11,19 @@ namespace Zork
 	//	//j = json{ {"Player", p.Name} };
 	//};
 
-	Player::Player(World world, Room startingLocation):_world(world), _currentRoom(startingLocation), CurrentRoom(_currentRoom) // constructor with 2 params
-	{
-	}
+	//Player::Player(World world, string startingLocation):_world(world), _currentRoom(startingLocation), CurrentRoom(_currentRoom) // constructor with 2 params
+	//{
+	//}
 
     void Player::Move(Directions::DirectionsEnum direction)
     {
 		//CurrentRoom = CurrentRoom.Neighbors.find(direction);
-		for (auto it : CurrentRoom.Neighbors)
-		{
-			cout << it.first << ":" << it.second.Name << "\n";
-		}
+		//for (auto it : CurrentRoom.Neighbors)
+		//{
+		//	cout << it.first << ":" << it.second.Name << "\n";
+		//}
 
-        auto nextRoom = CurrentRoom.Neighbors.find(direction);
+        auto nextRoom = CurrentRoom.Neighbors.find(direction); // next room does not contain any Neighbors for some reason
 
 		if (nextRoom == CurrentRoom.Neighbors.end())
 		{
@@ -32,10 +32,11 @@ namespace Zork
 		}
 		else
 		{
-			cout << nextRoom->first << " " << nextRoom->second.Name << "\n";
+			//cout << nextRoom->first << " " << nextRoom->second.Name << "\n";
 			// found the appropriate room but settin cr to second isnt the same as setting it to the room with the same name in the world
 			// after setting _cr and CR to nextroom->second, seems like neighbors dont exist for nextroom->second? so stuck when move once
-			_currentRoom = nextRoom->second;
+			_currentRoom = CurrentRoom.Neighbors[direction];
+			//_currentRoom = nextRoom->second;
 			CurrentRoom = _currentRoom;
 		}
         

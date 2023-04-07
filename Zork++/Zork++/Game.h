@@ -38,6 +38,7 @@ namespace Zork
             world = jworld;
             world.setRooms();
             startingLocation = jStartingLocation;
+            //player = new Player(world, startingLocation);
             player.setPlayerInfo(world, startingLocation);
         }
 

@@ -20,19 +20,20 @@ namespace Zork
 		list<Item> Inventory;
 
 		Player() = default;
-		Player(World world, Room startingLocation);
+		Player(World world, string startingLocation);
 
 
 		void setPlayerInfo(World world, string startingLocation)
 		{
 			//cout << "STARTING LOCATION: " << startingLocation << "\n";
 			_world = world;
+			_world.UpdateRoomNeighbors();
 
 			// for some reason room gets neighbors but the specific room in _world.Rooms never gets neighbors and CurrentRoom is the only room with neighbors at the end of this function
 			for (auto room : _world.Rooms)
 			{
 				cout << room.Name << ": " << room.Description << "\n";
-				room.UpdateNeighbors(_world.RoomsByName);
+				//room.UpdateNeighbors(_world);
 
 				if (room.Name == startingLocation)
 				{
